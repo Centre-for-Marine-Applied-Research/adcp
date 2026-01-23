@@ -92,7 +92,6 @@ adcp_count_obs <- function(dat,
   # create bin label and calculate proportion
   ints <- ints %>%
     mutate(
-      # ints_label = glue("{round(lower, digits = 1)}{label_sep}to{round(upper, digits = 1)}"),
       ints_label = paste(lower, "to", upper, sep = label_sep),
       prop = Freq / sum(Freq) * 100
     ) %>%
