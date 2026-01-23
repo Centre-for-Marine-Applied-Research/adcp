@@ -48,7 +48,7 @@ adcp_label_speed <- function(
 
   vals <- dat %>% pull(col_to_cut)
   if (is.null(upper_value)) {
-    max_value <- RoundTo(max(vals), n_ints, FUN = ceiling)
+    max_value <- RoundTo(max(vals, na.rm = TRUE), n_ints, FUN = ceiling)
   } else{
     max_value <- RoundTo(upper_value, n_ints, FUN = ceiling)
   }
