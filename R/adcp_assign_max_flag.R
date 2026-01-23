@@ -26,35 +26,13 @@
 adcp_assign_max_flag <- function(dat, qc_tests = NULL, return_all = TRUE) {
 
   if(is.null(qc_tests)) {
-    qc_tests = c("tidal_bin_height", "grossrange")
+    qc_tests = c("tidal_bin_height", "grossrange", "human_in_loop")
   }
 
-  # use for the join and to order columns in output
-  depl_cols <- c(
-    "county",
-    "waterbody",
-    "station",
-    "lease",
-    "latitude" ,
-    "longitude" ,
-    "deployment_id",
-    "timestamp_utc",
-    "bin_height_above_sea_floor_m",
-    "bin_depth_below_surface_m",
-    "trim_obs"
-  )
-
-  qc_test_cols <- current_thresholds %>%
-    select(qc_test, variable) %>%
-    distinct() %>%
-    mutate(col_name = paste(qc_test, "flag", variable, sep = "_")) %>%
-    arrange(qc_test) %>%
-    pull(col_name)
-
-  # save the origal data frame to join the qc_flag columns
+  # save the original data frame to join the qc_flag columns
   if ("variable" %in% colnames(dat)) {
     dat_og <- dat %>%
-      pivot_wider(values_from = "value", names_from = "variable")
+      adcp_pivot_flags_wider(qc_tests = qc_tests)
   } else  dat_og <- dat
 
   # pivot dat
@@ -63,10 +41,10 @@ adcp_assign_max_flag <- function(dat, qc_tests = NULL, return_all = TRUE) {
   }
 
   # use to join and sort the columns of the output
-  var_cols <- sort(unique(dat$variable))
+ # var_cols <- sort(unique(dat$variable))
 
   # use to join and sort the columns of the output
-  qc_max_cols <- paste("qc_flag", var_cols, sep = "_")
+ # qc_max_cols <- paste("qc_flag", var_cols, sep = "_")
 
   # find the maximum flag for each variable
   dat <- dat %>%
@@ -76,37 +54,15 @@ adcp_assign_max_flag <- function(dat, qc_tests = NULL, return_all = TRUE) {
       qc_col = ordered(qc_col, levels = 1:4)
     ) %>%
     select(-contains("flag_value")) %>%
-    rename(qc_flag = qc_col) %>%
-    pivot_wider(
-      names_from = "variable",
-      values_from = c("value", "qc_flag")
-    )
-
-  colnames(dat) <- str_remove_all(colnames(dat), pattern = "value_")
+    rename(qc_flag_value = qc_col) %>%
+    adcp_pivot_flags_wider(qc_tests = "qc")
 
   if(isTRUE(return_all)) {
 
-    join_cols <- c(
-      depl_cols[which(depl_cols %in% colnames(dat_og))], var_cols)
+    join_cols <- colnames(dat_og)[which(colnames(dat_og) %in% colnames(dat))]
 
     dat <- dat_og %>%
-      left_join(dat, by = join_cols) %>%
-      select(
-        any_of(depl_cols),    # deployment columns
-        all_of(var_cols),     # variable values
-        any_of(qc_test_cols), # qc flags
-        any_of(qc_max_cols),  # max qc flags
-        everything()          # anything left
-      )
-  } else {
-
-    dat <- dat %>%
-      select(
-        any_of(depl_cols),    # deployment columns
-        all_of(var_cols),     # variable values
-        any_of(qc_max_cols),  # max qc flags
-        everything()          # anything left
-      )
+      left_join(dat, by = join_cols)
   }
 
   dat
