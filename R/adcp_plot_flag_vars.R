@@ -116,8 +116,6 @@ adcp_ggplot_flags <- function(
 
   flag_column <- paste0(qc_test, "_flag_value")
 
-# if(is.null(n_col)) n_col <- length(unique(dat$variable_title))
-
   p <- dat %>%
     adcp_convert_vars_to_title() %>%
     ggplot(aes(timestamp_utc, value, col = !!sym(flag_column))) +

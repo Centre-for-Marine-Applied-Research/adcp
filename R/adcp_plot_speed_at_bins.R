@@ -57,7 +57,7 @@ adcp_plot_speed_at_bins <- function(
         col = {{ pal_col }},
         shape = {{ shape_col }})
   ) +
-    geom_point(size = 4, show.legend = TRUE) +
+    geom_point(size = 3, show.legend = TRUE) +
     geom_errorbar(
       aes(xmin = {{ min_col }}, xmax = {{ max_col }}),
       width = 0, show.legend = TRUE) +

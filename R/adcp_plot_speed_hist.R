@@ -45,7 +45,10 @@ adcp_plot_speed_hist <- function(
     ) %>%
     ggplot(aes( {{ speed_col }}, n_percent, fill = {{ speed_col }})) +
     geom_col(col = 1) +
-    geom_text(aes(label = n), vjust = -0.5, size = text_size) +
+    geom_text(
+      aes(label = format(n, big.mark = ",")),
+      vjust = -0.5, size = text_size
+    ) +
     geom_hline(yintercept = 0) +
     scale_fill_manual(values = pal, guide = "none") +
     scale_x_discrete(speed_label, drop = FALSE) +
@@ -55,12 +58,5 @@ adcp_plot_speed_hist <- function(
       expand = expansion(mult = c(0, 0.1))
     ) +
     adcp_theme()
-    # theme(
-    #   axis.ticks.x = element_line(colour = theme_col),
-    #   axis.ticks.y = element_line(colour = theme_col),
-    #
-    #   panel.border =  element_rect(colour = theme_col, fill = NA),
-    #   panel.background = element_rect(fill = NA),
-    #   panel.grid = element_line(color = theme_col, linewidth = 0.25)
-    # )
+
 }
