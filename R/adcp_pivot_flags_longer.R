@@ -22,11 +22,11 @@
 adcp_pivot_flags_longer <- function(dat, qc_tests = NULL, vars = NULL) {
 
   if (is.null(qc_tests)) {
-    qc_tests <- c(
-      "tidal_bin_height",
-      "grossrange",
-      "qc"
-    )
+    qc_tests <- c("tidal_bin_height", "grossrange", "qc")
+  }
+  if (is.null(vars)) {
+    vars <- c("sensor_depth_below_surface_m", "sea_water_speed_m_s",
+              "sea_water_to_direction_degree")
   }
 
   qc_tests <- tolower(qc_tests)
@@ -35,12 +35,11 @@ adcp_pivot_flags_longer <- function(dat, qc_tests = NULL, vars = NULL) {
     dat <- adcp_pivot_vars_longer(dat, vars = vars)
   }
 
-  # tidal bin height test does not depend on the variable, so do not need to pivot
+  #tidal bin height test does not depend on the variable, so do not need to pivot
   if ("tidal_bin_height" %in% qc_tests) {
     dat <- dat %>%
       relocate(
-        tidal_bin_height_flag_value = tidal_bin_height_flag,
-        .after = last_col()
+        tidal_bin_height_flag_value = tidal_bin_height_flag, .after = last_col()
       )
   }
 
@@ -48,6 +47,11 @@ adcp_pivot_flags_longer <- function(dat, qc_tests = NULL, vars = NULL) {
   if ("grossrange" %in% qc_tests) {
     dat <- adcp_pivot_single_test_longer(dat, qc_test = "grossrange")
   }
+
+  if ("human_in_loop" %in% qc_tests) {
+    dat <- adcp_pivot_single_test_longer(dat, qc_test = "human_in_loop")
+  }
+
 
   if ("rolling_sd" %in% qc_tests) {
     dat <- adcp_pivot_single_test_longer(dat, qc_test = "rolling_sd")
