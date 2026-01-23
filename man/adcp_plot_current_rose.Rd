@@ -9,7 +9,8 @@ adcp_plot_current_rose(
   pal = NULL,
   speed_col = sea_water_speed_cm_s_labels,
   direction_col = sea_water_to_direction_degree_labels,
-  speed_label = "Current Speed (cm/s)"
+  speed_label = "Current Speed (cm/s)",
+  ncol_legend = 2
 )
 }
 \arguments{
@@ -29,6 +30,8 @@ QUOTED).}
 
 \item{speed_label}{Title of the current speed legend. Default is "Current
 Speed (cm/s)".}
+
+\item{ncol_legend}{Number of columns for the figure legend. Default is 2.}
 }
 \value{
 Returns a ggplot object, a rose plot of current speed and direction.

@@ -21,11 +21,13 @@
 #' @param speed_label Title of the current speed legend. Default is "Current
 #'   Speed (cm/s)".
 #'
+#' @param ncol_legend Number of columns for the figure legend. Default is 2.
+#'
 #' @return Returns a ggplot object, a rose plot of current speed and direction.
 #'
 #' @importFrom dplyr reframe
 #' @importFrom ggplot2 aes coord_radial element_blank element_line element_rect
-#'   geom_col ggplot scale_fill_manual scale_x_discrete theme
+#'   geom_col ggplot position_stack scale_fill_manual scale_x_discrete theme
 #' @importFrom scales percent
 #' @importFrom viridis viridis
 #'
@@ -38,13 +40,19 @@ adcp_plot_current_rose <- function(
     pal = NULL,
     speed_col = sea_water_speed_cm_s_labels,
     direction_col = sea_water_to_direction_degree_labels,
-    speed_label = "Current Speed (cm/s)"
+    speed_label = "Current Speed (cm/s)",
+    ncol_legend = 2
 ) {
 
   if (is.null(pal)) {
     n_levels <-  nrow(reframe(dat, levels({{ speed_col }})))
     pal <- get_speed_colour_pal(n_levels)
   }
+
+  n_dir_levels <- length(levels(dat$sea_water_to_direction_degree_labels))
+
+  if(n_dir_levels == 8) theta <- -22.5
+  if(n_dir_levels == 16) theta <- -11.25
 
   dat %>%
     group_by({{ speed_col }}, {{ direction_col}}, drop = FALSE) %>%
@@ -54,14 +62,15 @@ adcp_plot_current_rose <- function(
     ggplot(
       aes({{ direction_col }}, n_prop, fill = {{ speed_col }})
     ) +
-    geom_col(show.legend = TRUE) + #, col = "grey30") +
+    geom_col(show.legend = TRUE, position = position_stack(reverse = TRUE)) +
     scale_fill_manual("Current Speed (cm/s)", values = pal, drop = FALSE) +
     scale_x_discrete(
       expand = expansion(add = c(0.5, 0.5)),
       drop = FALSE
     ) +
     scale_y_continuous(labels = scales::percent) +
-    coord_radial(start = -22.5 * pi / 180, r.axis.inside = TRUE) +
+    coord_radial(start = theta * pi / 180, r.axis.inside = TRUE) +
+    guides(fill = guide_legend(ncol =  ncol_legend)) +
     theme(
       axis.title.x = element_blank(),
       axis.title.y = element_blank(),
@@ -71,100 +80,65 @@ adcp_plot_current_rose <- function(
 
       axis.text.x = element_text(color = 1),
 
-      panel.border =  element_rect(colour = "gray50", fill = NA),
+      panel.border =  element_rect(colour = "gray50", fill = NA, linewidth = 0.25),
       panel.background = element_rect(fill = NA, color = NA),
 
-      panel.grid = element_line(color = "gray70", linewidth = 0.5),
+      panel.grid = element_line(color = "gray70", linewidth = 0.25),
       panel.grid.minor.y = element_blank()
     )
 }
 
 
-#' Generate current old rose
-#'
-#' @details Generates a current rose using the \code{windRose()} function from
-#'   the \code{openair} package. See help files for \code{openair::windRose} for
-#'   more detail.
-#'
-#'   For wave roses, replace "current speed" with "wave height".
-#'
-#' @param dat Data frame with column names that include the strings
-#'   \code{"speed"} and \code{"direction"}.
-#'
-#' @param breaks Number of break points for current speed OR a vector of breaks.
-#'   Lower-inclusive.
-#'
-#' @param speed_column Column name of the current speed (or wave height) column
-#'   (i.e., the length of the petals).
-#'
-#' @param direction_column Column name of the current (or wave ) direction
-#'   column (i.e., the direction of the petals).
-#'
-#' @param speed_colors Vector of colours. Must be the same length as
-#'   \code{breaks}.
-#'
-#' @param speed_label Title of the current speed legend. Default is "Current
-#'   Speed (cm/s)".
-#'
-#' @return Returns an "openair" object, a rose plot of current speed and
-#'   direction.
-#'
-#' @importFrom lattice ltext
-#' @importFrom openair windRose
-#' @importFrom viridis viridis
-#'
-#' @export
 
-
-adcp_plot_current_rose_old <- function(
-    dat,
-    breaks,
-    speed_column, direction_column,
-    speed_colors = NULL,
-    speed_label = "Current Speed (cm/s)"
-   # add_dir_labs = TRUE
-) {
-  if (is.null(speed_colors)) {
-    speed_colors <- viridis(breaks, option = "F", direction = -1)
-  }
-
-  dat <- dat %>%
-    select(SPEED = {{ speed_column }}, DIRECTION = {{ direction_column }})
-
-  p <- openair::windRose(
-    dat,
-    ws = "SPEED", wd = "DIRECTION",
-    breaks = breaks,
-    cols = speed_colors,
-    paddle = FALSE,
-    auto.text = FALSE,
-    annotate = FALSE,
-    key.header = speed_label,
-    key.footer = "",
-    key.position = "right",
-    plot = FALSE
-  )
-
-  # if(isTRUE(add_dir_labs)) {
-  #
-  #   p <- p$plot +
-  #     latticeExtra::layer(
-  #       lattice::ltext(0, 5, "N", cex = 0.75, col = "darkgrey")
-  #     ) +
-  #     latticeExtra::layer(
-  #       lattice::ltext(5, 0, "E", cex = 0.75, col = "darkgrey")
-  #     ) +
-  #     latticeExtra::layer(
-  #       lattice::ltext(-5, 0, "W", cex = 0.75, col = "darkgrey")
-  #     ) +
-  #     latticeExtra::layer(
-  #       lattice::ltext(0, -5, "S", cex = 0.75, col = "darkgrey")
-  #     )
-  # }
-
-  p
-
-}
+# adcp_plot_current_rose_old <- function(
+#     dat,
+#     breaks,
+#     speed_column, direction_column,
+#     speed_colors = NULL,
+#     speed_label = "Current Speed (cm/s)"
+#    # add_dir_labs = TRUE
+# ) {
+#   if (is.null(speed_colors)) {
+#     speed_colors <- viridis(breaks, option = "F", direction = -1)
+#   }
+#
+#   dat <- dat %>%
+#     select(SPEED = {{ speed_column }}, DIRECTION = {{ direction_column }})
+#
+#   p <- openair::windRose(
+#     dat,
+#     ws = "SPEED", wd = "DIRECTION",
+#     breaks = breaks,
+#     cols = speed_colors,
+#     paddle = FALSE,
+#     auto.text = FALSE,
+#     annotate = FALSE,
+#     key.header = speed_label,
+#     key.footer = "",
+#     key.position = "right",
+#     plot = FALSE
+#   )
+#
+#   # if(isTRUE(add_dir_labs)) {
+#   #
+#   #   p <- p$plot +
+#   #     latticeExtra::layer(
+#   #       lattice::ltext(0, 5, "N", cex = 0.75, col = "darkgrey")
+#   #     ) +
+#   #     latticeExtra::layer(
+#   #       lattice::ltext(5, 0, "E", cex = 0.75, col = "darkgrey")
+#   #     ) +
+#   #     latticeExtra::layer(
+#   #       lattice::ltext(-5, 0, "W", cex = 0.75, col = "darkgrey")
+#   #     ) +
+#   #     latticeExtra::layer(
+#   #       lattice::ltext(0, -5, "S", cex = 0.75, col = "darkgrey")
+#   #     )
+#   # }
+#
+#   p
+#
+# }
 
 
 
