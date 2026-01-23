@@ -119,6 +119,7 @@ utils::globalVariables(c(
   # bin height test
   "prop_obs",
   "tidal_bin_height_flag",
+  "tidal_bin_height_flag_value",
 
   # grossrange test
   "gr_max",
@@ -160,6 +161,15 @@ utils::globalVariables(c(
   "flag_value",
   "n_fl",
   "n_obs",
+
+  # extract_deployment_info_2
+  "station_deployment_id",
+
+  # human in loop
+  "hil_comment",
+  "human_in_loop_flag_value",
+  "human_in_loop_reference_flag_col",
+  "sensor_serial_number",
 
   # import_data
   "abb",

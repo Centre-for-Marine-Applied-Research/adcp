@@ -72,6 +72,47 @@ adcp_extract_deployment_info <- function(file_path) {
     )
 }
 
+#' Extract deployment date and station name from compiled rds file
+#'
+#' @param file_path Path to the file, include file name and extension (.rds).
+#'   File name must include the deployment date, the station name, and the
+#'   deployment id separated by "_", e.g., "2020-10-22_Cornwallis_SW_AN002".
+#'
+#' @return Returns a data frame with three columns: \code{depl_date},
+#'   \code{station}, and \code{deployment_id}.
+#'
+#' @importFrom dplyr %>%  mutate
+#' @importFrom lubridate as_date
+#' @importFrom stringr str_remove str_replace_all str_trim
+#' @importFrom tidyr separate
+#'
+#' @export
+
+adcp_extract_deployment_info2 <- function(file_path) {
+  sub(".*/", "", file_path, perl = TRUE) %>%
+    data.frame() %>%
+    separate(
+      col = ".", into = c("depl_date", "station_deployment_id"), sep = 11
+    ) %>%
+    mutate(
+      depl_date = str_remove(depl_date, pattern = "_"),
+      station_deployment_id = str_remove(
+        station_deployment_id, pattern = ".rds")
+    ) %>%
+    separate(
+      col = "station_deployment_id",
+      into = c("station", "deployment_id"), sep = -5
+    ) %>%
+    mutate(
+      # replace first _ with space (for station names with 2 words)
+      station = str_replace_all(station, pattern = "_", " "),
+      # trim trailing space
+      station = str_trim(station, side = "right"),
+      deployment_id = str_remove(deployment_id, pattern = "_"),
+    )
+}
+
+
 
 
 #' Check if there are files in the specified folder
@@ -194,6 +235,9 @@ get_speed_colour_pal <- function(n_colours) {
 #' @returns Returns a ggtheme
 #'
 #' @importFrom ggplot2 element_line element_rect element_text theme
+#'
+#' @export
+
 
 adcp_theme <- function() {
 

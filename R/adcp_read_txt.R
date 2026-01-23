@@ -31,7 +31,6 @@
 #' @importFrom data.table fread
 #' @importFrom dplyr %>% across case_when everything filter if_else last_col
 #'   mutate n select
-#' @importFrom glue glue
 #' @importFrom lubridate make_datetime force_tz
 #' @importFrom stringr str_detect
 #'

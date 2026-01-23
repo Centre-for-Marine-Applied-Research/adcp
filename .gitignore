@@ -5,6 +5,6 @@
 inst/doc
 docs
 
-/data-raw/hexsticker
+/data-raw
 
 *.pptx

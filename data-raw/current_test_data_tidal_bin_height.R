@@ -20,7 +20,7 @@ tracking <- adcp_read_tracking() %>%
   filter(depl_id == "YR009")
 
 dat <- adcp_read_txt(path, "2022-09-29_western_shoal.txt") %>%
-  adcp_assign_altitude(tracking) #%>%
+  adcp_assign_altitude(tracking) %>%
   adcp_correct_timestamp() %>%
   adcp_pivot_bin_height() %>%
   adcp_calculate_bin_depth(tracking) %>%
