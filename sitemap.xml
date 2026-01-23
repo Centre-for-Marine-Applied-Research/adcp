@@ -7,6 +7,7 @@
 <url><loc>https://dempsey-cmar.github.io/adcp/index.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_add_opendata_cols.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_add_sensor_frequency.html</loc></url>
+<url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_apply_human_in_loop.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_assign_altitude.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_assign_max_flag.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_calculate_bin_depth.html</loc></url>
@@ -18,6 +19,7 @@
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_correct_timestamp.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_count_obs.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_extract_deployment_info.html</loc></url>
+<url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_extract_deployment_info2.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_format_report_table.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_ggplot_flags.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_import_data.html</loc></url>
@@ -25,10 +27,10 @@
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_label_speed.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_pivot_bin_height.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_pivot_flags_longer.html</loc></url>
+<url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_pivot_flags_wider.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_pivot_single_test_longer.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_pivot_vars_longer.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_plot_current_rose.html</loc></url>
-<url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_plot_current_rose_old.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_plot_depth_flags.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_plot_flags.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_plot_speed_at_bins.html</loc></url>
@@ -40,6 +42,7 @@
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_summarise_flags.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_test_all.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_test_grossrange.html</loc></url>
+<url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_test_human_in_loop.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_test_rolling_sd.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_test_spike.html</loc></url>
 <url><loc>https://dempsey-cmar.github.io/adcp/reference/adcp_test_tidal_bin_height.html</loc></url>

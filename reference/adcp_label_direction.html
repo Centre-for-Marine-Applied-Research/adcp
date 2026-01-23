@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">adcp</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.0.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.0.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">adcp_label_direction</span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">adcp_label_direction</span><span class="op">(</span><span class="va">dat</span>, n_petals <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -50,6 +50,11 @@
 
 <dl><dt id="arg-dat">dat<a class="anchor" aria-label="anchor" href="#arg-dat"></a></dt>
 <dd><p>Data frame with column sea_water_to_direction_degree.</p></dd>
+
+
+<dt id="arg-n-petals">n_petals<a class="anchor" aria-label="anchor" href="#arg-n-petals"></a></dt>
+<dd><p>Number of bins to divide direction data into. Must be either
+8 or 16.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -62,8 +67,10 @@
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Likely more efficient in the original vectorized form. Modified to match
 <code><a href="adcp_label_speed.html">adcp_label_speed()</a></code>. Could re-visit both.</p>
-<p>Assigns direction data in bins of 45 degree C. -22.5 to 22.5 degree is North,
-22.5 to 67.5 is NNE, etc.</p>
+<p>If <code>n_petals</code> is 8: Assigns direction data in bins of 45 degrees. -22.5
+to 22.5 degree is North, 22.5 to 67.5 is NE, etc.</p>
+<p>If <code>n_petals</code> is 16 (the default): Assigns direction data in bins of
+22.5 degrees. -11.25 to 11.25 degree is North, 11.25 to 33.75 is NNE, etc.</p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

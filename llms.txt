@@ -364,6 +364,8 @@ Plot current speed histogram.
   : Add deployment_id, waterbody, and station columns
 - [`adcp_add_sensor_frequency()`](https://dempsey-cmar.github.io/adcp/reference/adcp_add_sensor_frequency.md)
   : Add column of ADCP frequency
+- [`adcp_apply_human_in_loop()`](https://dempsey-cmar.github.io/adcp/reference/adcp_apply_human_in_loop.md)
+  : Apply human in the loop flags and comments
 - [`adcp_assign_altitude()`](https://dempsey-cmar.github.io/adcp/reference/adcp_assign_altitude.md)
   : Assign altitude (height above sea floor) to each bin
 - [`adcp_assign_max_flag()`](https://dempsey-cmar.github.io/adcp/reference/adcp_assign_max_flag.md)
@@ -386,6 +388,8 @@ Plot current speed histogram.
   : Count number and proportion of observations in equal intervals
 - [`adcp_extract_deployment_info()`](https://dempsey-cmar.github.io/adcp/reference/adcp_extract_deployment_info.md)
   : Extract deployment date and station name from file path
+- [`adcp_extract_deployment_info2()`](https://dempsey-cmar.github.io/adcp/reference/adcp_extract_deployment_info2.md)
+  : Extract deployment date and station name from compiled rds file
 - [`adcp_format_report_table()`](https://dempsey-cmar.github.io/adcp/reference/adcp_format_report_table.md)
   : Formats tables for typst summary report
 - [`adcp_ggplot_flags()`](https://dempsey-cmar.github.io/adcp/reference/adcp_ggplot_flags.md)
@@ -401,14 +405,14 @@ Plot current speed histogram.
   observations
 - [`adcp_pivot_flags_longer()`](https://dempsey-cmar.github.io/adcp/reference/adcp_pivot_flags_longer.md)
   : Pivot flagged current data longer by variable
+- [`adcp_pivot_flags_wider()`](https://dempsey-cmar.github.io/adcp/reference/adcp_pivot_flags_wider.md)
+  : Pivot flagged current data wider by variable
 - [`adcp_pivot_single_test_longer()`](https://dempsey-cmar.github.io/adcp/reference/adcp_pivot_single_test_longer.md)
   : Complete pivot_longer of flagged current data
 - [`adcp_pivot_vars_longer()`](https://dempsey-cmar.github.io/adcp/reference/adcp_pivot_vars_longer.md)
   : Pivot current data
 - [`adcp_plot_current_rose()`](https://dempsey-cmar.github.io/adcp/reference/adcp_plot_current_rose.md)
   : Generate current rose
-- [`adcp_plot_current_rose_old()`](https://dempsey-cmar.github.io/adcp/reference/adcp_plot_current_rose_old.md)
-  : Generate current old rose
 - [`adcp_plot_depth_flags()`](https://dempsey-cmar.github.io/adcp/reference/adcp_plot_depth_flags.md)
   : Plot sensor_depth_below_surface_m coloured by depth_flag
 - [`adcp_plot_flags()`](https://dempsey-cmar.github.io/adcp/reference/adcp_plot_flags.md)
@@ -432,6 +436,8 @@ Plot current speed histogram.
   : Apply multiple quality control tests to current data
 - [`adcp_test_grossrange()`](https://dempsey-cmar.github.io/adcp/reference/adcp_test_grossrange.md)
   : Apply grossrange test to current variables
+- [`adcp_test_human_in_loop()`](https://dempsey-cmar.github.io/adcp/reference/adcp_test_human_in_loop.md)
+  : Apply human in the loop flags and comments
 - [`adcp_test_rolling_sd()`](https://dempsey-cmar.github.io/adcp/reference/adcp_test_rolling_sd.md)
   : Apply the rolling standard deviation test to current variables
 - [`adcp_test_spike()`](https://dempsey-cmar.github.io/adcp/reference/adcp_test_spike.md)
