@@ -1,4 +1,4 @@
-#' Assign intervals to numeric data
+#' Assign intervals to speed data
 #'
 #' Assigns intervals to \code{column} using the \code{cut()} function.
 #' \code{column} will typically be a \code{sea_water_speed} column. To label

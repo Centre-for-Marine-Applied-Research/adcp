@@ -2,7 +2,7 @@
 % Please edit documentation in R/adcp_label_speed.R
 \name{adcp_label_speed}
 \alias{adcp_label_speed}
-\title{Assign intervals to numeric data}
+\title{Assign intervals to speed data}
 \usage{
 adcp_label_speed(
   dat,

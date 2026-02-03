@@ -4,7 +4,7 @@
 \alias{adcp_check_new_folder}
 \title{Check if there are files in the specified folder}
 \usage{
-adcp_check_new_folder(path, pattern = "csv")
+adcp_check_new_folder(path, pattern = "rds")
 }
 \arguments{
 \item{path}{Path to the folder to check.}

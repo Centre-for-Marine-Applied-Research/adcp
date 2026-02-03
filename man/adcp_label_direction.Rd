@@ -2,7 +2,7 @@
 % Please edit documentation in R/adcp_label_direction.R
 \name{adcp_label_direction}
 \alias{adcp_label_direction}
-\title{Cut wind direction into 8 bins}
+\title{Cut wind direction into 8 or 16 bins}
 \usage{
 adcp_label_direction(dat, n_petals = 16)
 }

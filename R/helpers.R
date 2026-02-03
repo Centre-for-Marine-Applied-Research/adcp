@@ -126,15 +126,15 @@ adcp_extract_deployment_info2 <- function(file_path) {
 #'
 #' @export
 
-adcp_check_new_folder <- function(path, pattern = "csv") {
+adcp_check_new_folder <- function(path, pattern = "rds") {
 
-  dat_new <- list.files(path, pattern = "csv")
+  dat_new <- list.files(path, pattern = "rds")
 
   if(length(dat_new) > 0) {
-    warning(paste0("There are ", length(dat_new), " files in ", path,
+    warning(paste0("There are ", length(dat_new), " ", pattern, " files in ", path,
                    ".\nMove these to the county folder to assemble"))
   } else {
-    message("No files found in ", path)
+    message("No ", pattern, " files found in ", path)
   }
 }
 
