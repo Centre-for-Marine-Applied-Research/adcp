@@ -99,14 +99,14 @@ right inclusive. Passed to the <code>include.lowest</code> argument of
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Assigns intervals to <code>column</code> using the <code><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut()</a></code> function.
   Argument <code>right = TRUE</code> to match the intervals assigned in the
-  <code><a href="https://openair-project.github.io/openair/reference/windRose.html" class="external-link">openair::windRose()</a></code> function (which is called in
+  <code>openair::windRose()</code> function (which is called in
   <code><a href="adcp_plot_current_rose.html">adcp_plot_current_rose()</a></code>). This means intervals are right-inclusive,
   i.e., a value of 4 is assigned to the interval (1,4].</p>
-<p>NOTE: The <code><a href="https://openair-project.github.io/openair/reference/windRose.html" class="external-link">openair::windRose()</a></code> function has the <code><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut()</a></code>
+<p>NOTE: The <code>openair::windRose()</code> function has the <code><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut()</a></code>
   argument <code>include.lower</code> hard-coded to <code>FALSE</code>. This causes an
   issue with the intervals extracted from <code>adcp_count_obs()</code> being
   passed to <code><a href="adcp_plot_current_rose.html">adcp_plot_current_rose()</a></code> (which passes all arguments to
-  <code><a href="https://openair-project.github.io/openair/reference/windRose.html" class="external-link">openair::windRose()</a></code>).</p>
+  <code>openair::windRose()</code>).</p>
 <p>Assume the first interval is in the form (x1, x2], and the minimum value of
   the observations is xmin.</p>
 <p>This means that if the round(x1, digits = n_digits) equals xmin, values of
@@ -114,7 +114,7 @@ right inclusive. Passed to the <code>include.lowest</code> argument of
   of the first interval (because it is left exclusive). To avoid this,
   n_digits should be large enough to ensure round(x1, digits = n_digits) &lt;
   xmin. This could also be solved if <code>include.lower</code> could be set to
-  <code>TRUE</code> in <code><a href="https://openair-project.github.io/openair/reference/windRose.html" class="external-link">openair::windRose()</a></code>.</p>
+  <code>TRUE</code> in <code>openair::windRose()</code>.</p>
 <p>NOTE: I submitted a Pull Request to Open Air. I think it was merged. So
   could update the include.lower call here, but will need to think about
   this.</p>

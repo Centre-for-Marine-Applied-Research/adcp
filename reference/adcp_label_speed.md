@@ -1,4 +1,4 @@
-# Assign intervals to numeric data
+# Assign intervals to speed data
 
 Assigns intervals to `column` using the
 [`cut()`](https://rdrr.io/r/base/cut.html) function. `column` will

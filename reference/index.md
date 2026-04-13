@@ -39,9 +39,9 @@
 - [`adcp_import_data()`](https://dempsey-cmar.github.io/adcp/reference/adcp_import_data.md)
   : Import current data from rds files.
 - [`adcp_label_direction()`](https://dempsey-cmar.github.io/adcp/reference/adcp_label_direction.md)
-  : Cut wind direction into 8 bins
+  : Cut wind direction into 8 or 16 bins
 - [`adcp_label_speed()`](https://dempsey-cmar.github.io/adcp/reference/adcp_label_speed.md)
-  : Assign intervals to numeric data
+  : Assign intervals to speed data
 - [`adcp_pivot_bin_height()`](https://dempsey-cmar.github.io/adcp/reference/adcp_pivot_bin_height.md)
   : Pivot ADCP data from bin height as column names to bin height as
   observations

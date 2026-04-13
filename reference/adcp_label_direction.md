@@ -1,4 +1,4 @@
-# Cut wind direction into 8 bins
+# Cut wind direction into 8 or 16 bins
 
 Adapted from `cutVecWinddir()` from `OpenAir`.
 

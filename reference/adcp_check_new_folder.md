@@ -5,7 +5,7 @@ Check if there are files in the specified folder
 ## Usage
 
 ``` r
-adcp_check_new_folder(path, pattern = "csv")
+adcp_check_new_folder(path, pattern = "rds")
 ```
 
 ## Arguments

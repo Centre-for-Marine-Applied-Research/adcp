@@ -64,20 +64,17 @@ interval.
 Assigns intervals to `column` using the
 [`cut()`](https://rdrr.io/r/base/cut.html) function. Argument
 `right = TRUE` to match the intervals assigned in the
-[`openair::windRose()`](https://openair-project.github.io/openair/reference/windRose.html)
-function (which is called in
+`openair::windRose()` function (which is called in
 [`adcp_plot_current_rose()`](https://dempsey-cmar.github.io/adcp/reference/adcp_plot_current_rose.md)).
 This means intervals are right-inclusive, i.e., a value of 4 is assigned
 to the interval (1,4\].
 
-NOTE: The
-[`openair::windRose()`](https://openair-project.github.io/openair/reference/windRose.html)
-function has the [`cut()`](https://rdrr.io/r/base/cut.html) argument
-`include.lower` hard-coded to `FALSE`. This causes an issue with the
-intervals extracted from `adcp_count_obs()` being passed to
+NOTE: The `openair::windRose()` function has the
+[`cut()`](https://rdrr.io/r/base/cut.html) argument `include.lower`
+hard-coded to `FALSE`. This causes an issue with the intervals extracted
+from `adcp_count_obs()` being passed to
 [`adcp_plot_current_rose()`](https://dempsey-cmar.github.io/adcp/reference/adcp_plot_current_rose.md)
-(which passes all arguments to
-[`openair::windRose()`](https://openair-project.github.io/openair/reference/windRose.html)).
+(which passes all arguments to `openair::windRose()`).
 
 Assume the first interval is in the form (x1, x2\], and the minimum
 value of the observations is xmin.
@@ -87,8 +84,7 @@ of xmin will NOT be assigned to an interval. In this case, xmin falls
 outside of the first interval (because it is left exclusive). To avoid
 this, n_digits should be large enough to ensure round(x1, digits =
 n_digits) \< xmin. This could also be solved if `include.lower` could be
-set to `TRUE` in
-[`openair::windRose()`](https://openair-project.github.io/openair/reference/windRose.html).
+set to `TRUE` in `openair::windRose()`.
 
 NOTE: I submitted a Pull Request to Open Air. I think it was merged. So
 could update the include.lower call here, but will need to think about
