@@ -9,7 +9,7 @@ Description: Facilitates wrangling and analysis of Current data collected
     Program. Compatible sensors include Workhorse Sentinel Acoustic Doppler
     Current Profilers.
 License: GPL (>= 3)
-URL: https://dempsey-cmar.github.io/adcp/
+URL: https://Centre-for-Marine-Applied-Research.github.io/adcp/
 Depends: 
     R (>= 3.5)
 Imports: 
@@ -41,4 +41,4 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.3
 Remotes: 
-    dempsey-CMAR/qaqcmar
+    Centre-for-Marine-Applied-Research/qaqcmar
