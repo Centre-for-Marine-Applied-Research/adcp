@@ -5,9 +5,11 @@
 #' number of observations for each current speed and direction bin.
 #'
 #' @param dat Data frame with at least 2 columns: an ordered factor of direction
-#'   groups, and a factor of speed groups. The proportion of observations in
-#'   each group is counted in the function and automatically converted to
-#'   percent for the figure.
+#'   groups, and a factor of speed groups. By default, the proportion of
+#'   observations in each group (speed and direction) is counted in the
+#'   function. If more groups are required, set \code{calculate_prop = FALSE},
+#'   and include the proportions in a column called \code{n_prop}. The
+#'   proportion is automatically converted to percent for the figure.
 #'
 #' @param direction_col The column in \code{dat} that holds the direction groups
 #'   (NOT QUOTED).
@@ -22,6 +24,10 @@
 #'   Speed (cm/s)".
 #'
 #' @param ncol_legend Number of columns for the figure legend. Default is 2.
+#'
+#' @param calculate_prop Logical argument. The default, \code{TRUE}, will
+#'   calculate the proporation of observations in each speed and direction
+#'   group. Set to \code{FALSE} to include proporation in \code{dat}.
 #'
 #' @return Returns a ggplot object, a rose plot of current speed and direction.
 #'
@@ -41,7 +47,8 @@ adcp_plot_current_rose <- function(
     speed_col = sea_water_speed_cm_s_labels,
     direction_col = sea_water_to_direction_degree_labels,
     speed_label = "Current Speed (cm/s)",
-    ncol_legend = 2
+    ncol_legend = 2,
+    calculate_prop = TRUE
 ) {
 
   if (is.null(pal)) {
@@ -49,21 +56,27 @@ adcp_plot_current_rose <- function(
     pal <- get_speed_colour_pal(n_levels)
   }
 
-  n_dir_levels <- length(levels(dat$sea_water_to_direction_degree_labels))
+  n_dir_levels <- length(levels(dat[[deparse(substitute(direction_col))]]))
 
   if(n_dir_levels == 8) theta <- -22.5
   if(n_dir_levels == 16) theta <- -11.25
 
-  dat %>%
-    group_by({{ speed_col }}, {{ direction_col}}, drop = FALSE) %>%
-    summarise(n = n()) %>%
-    ungroup() %>%
-    mutate(n_prop = n / sum(n)) %>%
-    ggplot(
-      aes({{ direction_col }}, n_prop, fill = {{ speed_col }})
-    ) +
+
+  if(isTRUE(calculate_prop)) {
+    dat <- dat %>%
+    #  group_by({{ speed_col }}, {{ direction_col}}, drop = FALSE) %>%
+      summarise(n = n(), .by = c({{ speed_col }}, {{ direction_col}}),
+                drop = FALSE) %>%
+      ungroup() %>%
+      mutate(n_prop = n / sum(n))
+  }
+
+  ggplot(
+    dat,
+    aes({{ direction_col }}, n_prop, fill = {{ speed_col }})
+  ) +
     geom_col(show.legend = TRUE, position = position_stack(reverse = TRUE)) +
-    scale_fill_manual("Current Speed (cm/s)", values = pal, drop = FALSE) +
+    scale_fill_manual(speed_label, values = pal, drop = FALSE) +
     scale_x_discrete(
       expand = expansion(add = c(0.5, 0.5)),
       drop = FALSE
@@ -91,7 +104,7 @@ adcp_plot_current_rose <- function(
 
 
 # adcp_plot_current_rose_old <- function(
-#     dat,
+    #     dat,
 #     breaks,
 #     speed_column, direction_column,
 #     speed_colors = NULL,

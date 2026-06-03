@@ -10,14 +10,17 @@ adcp_plot_current_rose(
   speed_col = sea_water_speed_cm_s_labels,
   direction_col = sea_water_to_direction_degree_labels,
   speed_label = "Current Speed (cm/s)",
-  ncol_legend = 2
+  ncol_legend = 2,
+  calculate_prop = TRUE
 )
 }
 \arguments{
 \item{dat}{Data frame with at least 2 columns: an ordered factor of direction
-groups, and a factor of speed groups. The proportion of observations in
-each group is counted in the function and automatically converted to
-percent for the figure.}
+groups, and a factor of speed groups. By default, the proportion of
+observations in each group (speed and direction) is counted in the
+function. If more groups are required, set \code{calculate_prop = FALSE},
+and include the proportions in a column called \code{n_prop}. The
+proportion is automatically converted to percent for the figure.}
 
 \item{pal}{Vector of colours. Must be the same length as the number of speed
 factor levels.}
@@ -32,6 +35,10 @@ QUOTED).}
 Speed (cm/s)".}
 
 \item{ncol_legend}{Number of columns for the figure legend. Default is 2.}
+
+\item{calculate_prop}{Logical argument. The default, \code{TRUE}, will
+calculate the proporation of observations in each speed and direction
+group. Set to \code{FALSE} to include proporation in \code{dat}.}
 }
 \value{
 Returns a ggplot object, a rose plot of current speed and direction.

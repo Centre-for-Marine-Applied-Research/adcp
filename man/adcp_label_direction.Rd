@@ -4,13 +4,20 @@
 \alias{adcp_label_direction}
 \title{Cut wind direction into 8 or 16 bins}
 \usage{
-adcp_label_direction(dat, n_petals = 16)
+adcp_label_direction(
+  dat,
+  n_petals = 16,
+  column = sea_water_to_direction_degree
+)
 }
 \arguments{
 \item{dat}{Data frame with column sea_water_to_direction_degree.}
 
 \item{n_petals}{Number of bins to divide direction data into. Must be either
 8 or 16.}
+
+\item{column}{Column in \code{dat} that will be assigned direction intervals
+(NOT QUOTED).}
 }
 \value{
 Returns \code{dat} with an additional column

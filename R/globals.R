@@ -101,6 +101,9 @@ utils::globalVariables(c(
   "ints",
   "col_to_cut",
 
+  "dir_label",
+
+
   # import current data
   # "Open_Data_Station",
   # "2022 Report (sidelobe trimmed)",
