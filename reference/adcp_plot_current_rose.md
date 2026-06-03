@@ -14,7 +14,8 @@ adcp_plot_current_rose(
   speed_col = sea_water_speed_cm_s_labels,
   direction_col = sea_water_to_direction_degree_labels,
   speed_label = "Current Speed (cm/s)",
-  ncol_legend = 2
+  ncol_legend = 2,
+  calculate_prop = TRUE
 )
 ```
 
@@ -23,9 +24,11 @@ adcp_plot_current_rose(
 - dat:
 
   Data frame with at least 2 columns: an ordered factor of direction
-  groups, and a factor of speed groups. The proportion of observations
-  in each group is counted in the function and automatically converted
-  to percent for the figure.
+  groups, and a factor of speed groups. By default, the proportion of
+  observations in each group (speed and direction) is counted in the
+  function. If more groups are required, set `calculate_prop = FALSE`,
+  and include the proportions in a column called `n_prop`. The
+  proportion is automatically converted to percent for the figure.
 
 - pal:
 
@@ -47,6 +50,12 @@ adcp_plot_current_rose(
 - ncol_legend:
 
   Number of columns for the figure legend. Default is 2.
+
+- calculate_prop:
+
+  Logical argument. The default, `TRUE`, will calculate the proporation
+  of observations in each speed and direction group. Set to `FALSE` to
+  include proporation in `dat`.
 
 ## Value
 

@@ -11,6 +11,7 @@ You can install the development version of adcp from
 [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("devtools")
 devtools::install_github("dempsey-CMAR/adcp")
 ```
@@ -64,6 +65,7 @@ bin size.
 ## Example
 
 ``` r
+
 library(adcp)
 library(dplyr)
 library(viridis)
@@ -86,6 +88,7 @@ measured. Additional columns, labelled `V8` to `Vn` hold the
 measurements for each bin.
 
 ``` r
+
 
 path <- system.file("testdata", package = "adcp")
 
@@ -138,6 +141,7 @@ corresponding bin altitude (height above the sea floor), using
 information from the deployment configuration.
 
 ``` r
+
 dat <- adcp_assign_altitude(dat, metadata = metadata)
 
 head(dat[, 1:10])
@@ -166,6 +170,7 @@ hours if the deployment date was during daylight savings, or 4 hours if
 the deployment date was during Atlantic Standard Time.
 
 ``` r
+
 dat <- adcp_correct_timestamp(dat)
 
 head(dat[1:10])
@@ -187,6 +192,7 @@ Forecast-compliant](https://cfconventions.org/Data/cf-standard-names/current/bui
 names to each column.
 
 ``` r
+
 dat <- adcp_pivot_longer(dat)
 
 head(dat)
@@ -213,6 +219,7 @@ required.
 adds column `bin_depth_below_surface_m`:
 
 ``` r
+
 dat <- adcp_calculate_bin_depth(dat, metadata = metadata)
 
 head(dat)
@@ -235,6 +242,7 @@ adds `deployment_id`, `waterbody`, and `station` columns so the data can
 be compiled with other deployments.
 
 ``` r
+
 dat <- adcp_add_opendata_cols(dat, metadata = metadata)
 
 head(dat)
@@ -257,6 +265,7 @@ head(dat)
 `sensor_depth_below_surface_m` changes faster than expected.
 
 ``` r
+
 dat <- adcp_flag_data(dat)
 
 head(dat[, 6:11])
@@ -277,6 +286,7 @@ head(dat[, 6:11])
 All of these steps can be linked using the pipe operator:
 
 ``` r
+
 dat <- adcp_read_txt(path, "2019-01-17_Long_Beach.txt") %>% 
   adcp_assign_altitude(metadata) %>%
   adcp_correct_timestamp() %>%
@@ -308,6 +318,7 @@ Plot the sensor depth to determine if any observations should be
 trimmed.
 
 ``` r
+
 adcp_plot_depth_flags(dat)
 ```
 
@@ -316,12 +327,14 @@ adcp_plot_depth_flags(dat)
 Filter data to keep “good” obsevations.
 
 ``` r
+
 dat <- filter(dat, depth_flag == "good")
 ```
 
 Plot sensor depth:
 
 ``` r
+
 adcp_plot_depth(dat, geom = "line")
 ```
 
@@ -330,6 +343,7 @@ adcp_plot_depth(dat, geom = "line")
 Plot current rose:
 
 ``` r
+
 
 cols <- viridis(12, option = "F", direction = -1)
 
@@ -351,6 +365,7 @@ adcp_plot_current_rose(
 Plot current speed histogram.
 
 ``` r
+
  adcp_plot_speed_hist(ints, bar_cols = cols, speed_label = "Current Speed (m/s)")
 ```
 

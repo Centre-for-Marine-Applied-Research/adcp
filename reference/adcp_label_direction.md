@@ -5,7 +5,11 @@ Adapted from `cutVecWinddir()` from `OpenAir`.
 ## Usage
 
 ``` r
-adcp_label_direction(dat, n_petals = 16)
+adcp_label_direction(
+  dat,
+  n_petals = 16,
+  column = sea_water_to_direction_degree
+)
 ```
 
 ## Arguments
@@ -17,6 +21,11 @@ adcp_label_direction(dat, n_petals = 16)
 - n_petals:
 
   Number of bins to divide direction data into. Must be either 8 or 16.
+
+- column:
+
+  Column in `dat` that will be assigned direction intervals (NOT
+  QUOTED).
 
 ## Value
 

@@ -1,6 +1,7 @@
 # Exploring Base R's cut() function
 
 ``` r
+
 library(adcp)
 library(dplyr)
 library(gbRd)
@@ -45,16 +46,16 @@ cut(x, breaks, labels = NULL,
 
 ### Arguments
 
-|                  |                                                                                                                                                                                                    |
-|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`              | a numeric vector which is to be converted to a factor by cutting.                                                                                                                                  |
-| `breaks`         | either a numeric vector of two or more unique cut points or a single number (greater than or equal to 2) giving the number of intervals into which `x` is to be cut.                               |
-| `labels`         | labels for the levels of the resulting category. By default, labels are constructed using `“(a,b]”` interval notation. If `labels = FALSE`, simple integer codes are returned instead of a factor. |
-| `include.lowest` | logical, indicating if an ‘x\[i\]’ equal to the lowest (or highest, for `right = FALSE`) ‘breaks’ value should be included.                                                                        |
-| `right`          | logical, indicating if the intervals should be closed on the right (and open on the left) or vice versa.                                                                                           |
-| `dig.lab`        | integer which is used when labels are not given. It determines the number of digits used in formatting the break numbers.                                                                          |
-| `ordered_result` | logical: should the result be an ordered factor?                                                                                                                                                   |
-| `…`              | further arguments passed to or from other methods.                                                                                                                                                 |
+|  |  |
+|----|----|
+| `x` | a numeric vector which is to be converted to a factor by cutting. |
+| `breaks` | either a numeric vector of two or more unique cut points or a single number (greater than or equal to 2) giving the number of intervals into which `x` is to be cut. |
+| `labels` | labels for the levels of the resulting category. By default, labels are constructed using `“(a,b]”` interval notation. If `labels = FALSE`, simple integer codes are returned instead of a factor. |
+| `include.lowest` | logical, indicating if an ‘x\[i\]’ equal to the lowest (or highest, for `right = FALSE`) ‘breaks’ value should be included. |
+| `right` | logical, indicating if the intervals should be closed on the right (and open on the left) or vice versa. |
+| `dig.lab` | integer which is used when labels are not given. It determines the number of digits used in formatting the break numbers. |
+| `ordered_result` | logical: should the result be an ordered factor? |
+| `…` | further arguments passed to or from other methods. |
 
 ### Details
 
@@ -98,8 +99,8 @@ efficient.
 
 ### References
 
-Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) *The New S
-Language*. Wadsworth & Brooks/Cole.
+Becker RA, Chambers JM, Wilks AR (1988). *The New S Language*. Chapman
+and Hall/CRC, London. ISBN 053409192X.
 
 ### See Also
 
