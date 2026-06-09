@@ -20,7 +20,7 @@
 
 adcp_summarise_flags <- function(dat, ...) {
 
-  qc_summary <-  dat %>%
+  dat %>%
     group_by(variable, bin_height_above_sea_floor_m, ...) %>%
     mutate(n_obs = n()) %>%
     ungroup() %>%
