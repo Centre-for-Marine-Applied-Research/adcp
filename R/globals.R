@@ -103,6 +103,15 @@ utils::globalVariables(c(
 
   "dir_label",
 
+  # vector average
+  "direction_degree",
+  "mean_direction_degree",
+  "mean_speed",
+  "speed",
+  "v_x",
+  "v_x_mean",
+  "v_y",
+  "v_y_mean",
 
   # import current data
   # "Open_Data_Station",

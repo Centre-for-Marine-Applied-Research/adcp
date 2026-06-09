@@ -327,3 +327,12 @@ dat_all <- dat_rolling_sd %>%
 dat_all_qc <- dat_all %>%
   adcp_test_all(county = "Yarmouth")
 
+
+# adcp_calculate_vector_average -------------------------------------------
+
+dat_vec <- data.frame(
+  group_col = c("a", "a", "b", "b", "b", "c", "d", "d"),
+  sea_water_speed = c(1, 1,  1, 1, 1, 1, 1, 0.5),
+  sea_water_to_direction_degree = c(0, 90, 45, 60, 170, 272,0, 90)
+) %>%
+  adcp_calculate_vector_average(group_col, speed_col = sea_water_speed)

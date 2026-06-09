@@ -53,11 +53,6 @@ adcp_label_direction <- function(
           labels = c("NE", "E", "SE", "S", "SW", "W", "NW", "N")
         )
       )
-    # $sea_water_to_direction_degree_labels <- cut(
-    #   dat$sea_water_to_direction_degree,
-    #   breaks = seq(22.5, 382.5, 45),
-    #   labels = c("NE", "E", "SE", "S", "SW", "W", "NW", "N")
-    # )
 
     levels <- c("N", "NE", "E", "SE", "S", "SW", "W", "NW")
   }
@@ -75,14 +70,6 @@ adcp_label_direction <- function(
             "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW", "N")
         )
       )
-
-    # dat$sea_water_to_direction_degree_labels <- cut(
-    #   dat$sea_water_to_direction_degree,
-    #   breaks = seq(11.25, 371.25, 22.5),
-    #   labels = c(
-    #     "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S",
-    #     "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW", "N")
-    # )
 
     levels <- c("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S",
                 "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW")
