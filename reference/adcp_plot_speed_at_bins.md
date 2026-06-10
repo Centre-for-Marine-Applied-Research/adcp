@@ -42,11 +42,11 @@ adcp_plot_speed_at_bins(
 
 - shape_col:
 
-  Column to map onto shape (UNQUOTED).. Optional.
+  Column to map onto shape (UNQUOTED). Optional.
 
 - pal_col:
 
-  Column to map to colour (UNQUOTED). MUst be a factor.
+  Column to map to colour (UNQUOTED). Must be a factor.
 
 - pal:
 

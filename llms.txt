@@ -387,6 +387,8 @@ Plot current speed histogram.
   : Assign each observation the maximum flag from applied QC tests.
 - [`adcp_calculate_bin_depth()`](https://dempsey-cmar.github.io/adcp/reference/adcp_calculate_bin_depth.md)
   : Calculate the bin depth below the surface
+- [`adcp_calculate_vector_average()`](https://dempsey-cmar.github.io/adcp/reference/adcp_calculate_vector_average.md)
+  : Generate summary table of flags
 - [`adcp_check_duplicate_timestamp()`](https://dempsey-cmar.github.io/adcp/reference/adcp_check_duplicate_timestamp.md)
   : Check for duplicate timestamp values
 - [`adcp_check_new_folder()`](https://dempsey-cmar.github.io/adcp/reference/adcp_check_new_folder.md)
