@@ -37,7 +37,9 @@
 #' @param ... Optional argument. Column names (not quoted) from \code{dat} to
 #'   use as grouping variables.
 #'
-#' @return Returns \code{dat} with additional columns.
+#' @return Returns data frame with the vector average speed and direction and
+#'   optionally the vector components. Returns scalar standard deviation of
+#'   speed.
 #'
 #' @importFrom dplyr mutate n rename select  summarise
 #'
@@ -64,6 +66,8 @@ adcp_calculate_vector_average <- function(
     summarise(
       v_x_mean = mean(v_x),
       v_y_mean = mean(v_y),
+
+     # sd_speed = round(sd(speed, na.rm = TRUE), digits = 2),
       .groups = "drop"
     ) %>%
     mutate(
@@ -81,9 +85,9 @@ adcp_calculate_vector_average <- function(
 
   dat_comp %>%
     rename(
+      #"sd_{{ speed_col }}" := sd_speed,
+
       "{{ speed_col }}" := mean_speed,
       "{{ direction_degree_col }}" := mean_direction_degree
     )
-
-
 }

@@ -60,6 +60,13 @@ utils::globalVariables(c(
   "retrieval_date",
   "sensor_model",
 
+  "Averaging Interval (s)",
+  "Ensemble Interval (s)",
+  "Pings per Ensemble",
+  "wave_averaging_interval_s",
+  "wave_ensemble_interval_s",
+  "wave_pings_per_ensemble",
+
   # export_deployment_info
   "depl_date",
   "station",
@@ -112,6 +119,7 @@ utils::globalVariables(c(
   "v_x_mean",
   "v_y",
   "v_y_mean",
+  "sd_speed",
 
   # import current data
   # "Open_Data_Station",

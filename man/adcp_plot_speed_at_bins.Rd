@@ -30,9 +30,9 @@ Default is \code{q_25}.}
 \item{max_col}{Column with the maximum values for the error bar (UNQUOTED).
 Default is \code{q_75}.}
 
-\item{shape_col}{Column to map onto shape (UNQUOTED).. Optional.}
+\item{shape_col}{Column to map onto shape (UNQUOTED). Optional.}
 
-\item{pal_col}{Column to map to colour (UNQUOTED). MUst be a factor.}
+\item{pal_col}{Column to map to colour (UNQUOTED). Must be a factor.}
 
 \item{pal}{Option colour palette.}
 

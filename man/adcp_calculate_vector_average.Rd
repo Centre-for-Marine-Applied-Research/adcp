@@ -29,7 +29,9 @@ data (NOT QUOTED). Must be in units of degrees from vertical.}
 components.}
 }
 \value{
-Returns \code{dat} with additional columns.
+Returns data frame with the vector average speed and direction and
+  optionally the vector components. Returns scalar standard deviation of
+  speed.
 }
 \description{
 Calculate the vector average for current speed and direction.

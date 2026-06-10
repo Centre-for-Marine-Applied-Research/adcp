@@ -4,10 +4,14 @@
 \alias{adcp_write_report_table}
 \title{Writes deployment table for summary report}
 \usage{
-adcp_write_report_table(metadata)
+adcp_write_report_table(metadata, keep_wave_cols = FALSE)
 }
 \arguments{
 \item{metadata}{Deployment metadata from the ADCP TRACKING sheet.}
+
+\item{keep_wave_cols}{Logical argument. If \code{TRUE}, the wave ensemble
+interval, average interval, and pings per ensemble columns are included in
+the output.}
 }
 \value{
 Returns a data frame with columns for the report table.

@@ -13,9 +13,9 @@
 #' @param max_col Column with the maximum values for the error bar (UNQUOTED).
 #'   Default is \code{q_75}.
 #'
-#' @param shape_col Column to map onto shape (UNQUOTED).. Optional.
+#' @param shape_col Column to map onto shape (UNQUOTED). Optional.
 #'
-#' @param pal_col Column to map to colour (UNQUOTED). MUst be a factor.
+#' @param pal_col Column to map to colour (UNQUOTED). Must be a factor.
 #'
 #' @param pal Option colour palette.
 #'
