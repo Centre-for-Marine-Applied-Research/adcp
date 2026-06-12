@@ -6,8 +6,7 @@ Author: Danielle Dempsey
 Maintainer: Danielle Dempsey <ddempsey@perennia.ca>
 Description: Facilitates wrangling and analysis of Current data collected
     as part of the Centre for Marine Applied Research's Coastal Monitoring
-    Program. Compatible sensors include Workhorse Sentinel Acoustic Doppler
-    Current Profilers.
+    Program.
 License: GPL (>= 3)
 URL: https://Centre-for-Marine-Applied-Research.github.io/adcp/
 Depends: 
